@@ -267,3 +267,15 @@ class QualitycheckEntry(BaseModel):
     field_5: str | None = None  # 整改要求
     field_6: str | None = None  # 整改期限
     field_7: str | None = None  # 监察状态
+
+
+class LeasingStagePayload(BaseModel):
+    """招商交接：多选楼层整批暂存进待核对区。"""
+
+    floors: list[str] = Field(default_factory=list)
+
+
+class LeasingConfirmPayload(BaseModel):
+    """招商交接：逐条确认后入库；不传 row_ids 则确认全部有效行。"""
+
+    row_ids: list[int] | None = None
